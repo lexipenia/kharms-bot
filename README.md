@@ -1,6 +1,6 @@
 # kharms-bot
 
-A modified version of the [Kierkegaard repetition bot](https://github.com/lexipenia/repetition-bot-2). Rather than insert a long string of blank characters to guarantee non-identity of tweets, this bot uses a more limited set of space characters and places them between the words. (Twitter strips blank strings at the beginning and ending of tweets.)
+A modified version of the [Kierkegaard repetition bot](https://github.com/lexipenia/repetition-bot-2). Rather than insert a long string of blank characters to guarantee non-identity of tweets, this bot uses a more limited set of space characters and places them between the words. (Twitter strips blank strings at the beginning and end of tweets.)
 
 ## `config.py` and `chromedriver` location
 
