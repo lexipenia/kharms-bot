@@ -1,0 +1,6 @@
+.DS_Store
+config.py
+debug/
+chrome/
+__pycache__/config.cpython-39.pyc
+__pycache__/invisibles.cpython-39.pyc
