@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 
 from config import *
-from invisibles import *
+from spaces import *
 
 # create an ID for identifying debug files
 run_ID = str(randint(10000000,99999999))
@@ -133,14 +133,16 @@ class Bot:
         button.click()
         print("Button clicked.")
             
-# generate the tweet text, containing novel invisible spaces
+# generate the tweet text, with random space character + random number of zero-width spaces between words
+# spaces have to be the same width, so there are only two (space and nb-space) we can use
+# the non-identity has to come from the random numbers of zero-width spaces
 def generateTweetText():
     tweet_text = "Today"
-    tweet_text += choice(list(invisible_characters.values()))
+    tweet_text += choice(list(space_characters.values())) + randint(0,30)*zero_width_space
     tweet_text += "I"
-    tweet_text += choice(list(invisible_characters.values()))
+    tweet_text += choice(list(space_characters.values())) + randint(0,30)*zero_width_space
     tweet_text += "Tweeted"
-    tweet_text += choice(list(invisible_characters.values()))
+    tweet_text += choice(list(space_characters.values())) + randint(0,30)*zero_width_space
     tweet_text += "Nothing"
     return tweet_text
 
