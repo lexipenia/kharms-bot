@@ -9,7 +9,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 
 from config import *
-from spaces import *
 
 # create an ID for identifying debug files
 run_ID = str(randint(10000000,99999999))
@@ -119,7 +118,7 @@ class Bot:
                 f.write(self.driver.page_source)
     
         tweet_box = self.driver.find_element_by_xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div/div/div/div/div/div/div/div/div/label/div[1]/div/div/div/div/div[2]/div")
-        tweet_box.send_keys(generateTweetText())
+        tweet_box.send_keys(makeUniqueString("Today I Tweeted Nothing",10))
         tweet_button = self.driver.find_element_by_xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[3]/div/div/div[2]/div[3]")
         tweet_button.click()
         print("Tweet sent successfully.")
@@ -133,18 +132,14 @@ class Bot:
         button.click()
         print("Button clicked.")
             
-# generate the tweet text, with random space character + random number of zero-width spaces between words
-# spaces have to be the same width, so there are only two (space and nb-space) we can use
-# the non-identity has to come from the random numbers of zero-width spaces
-def generateTweetText():
-    tweet_text = "Today"
-    tweet_text += choice(list(space_characters.values())) + randint(0,30)*zero_width_space
-    tweet_text += "I"
-    tweet_text += choice(list(space_characters.values())) + randint(0,30)*zero_width_space
-    tweet_text += "Tweeted"
-    tweet_text += choice(list(space_characters.values())) + randint(0,30)*zero_width_space
-    tweet_text += "Nothing"
-    return tweet_text
+# generate a "unique" version of any string by inserting random numbers of zero-width spaces
+# If run on "Today I Tweeted Nothing" with max 10 spaces, we have 11^22 possibilities, max length = 243 
+def makeUniqueString(input_string,max_spaces):
+    output = ""
+    for character in input_string[:-1]:
+        output += character + randint(0,max_spaces)*"\u200B"
+    output += input_string[-1]
+    return output
 
 # remove files if the bot ran successfully / no debug required
 def deleteFiles():

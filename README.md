@@ -1,6 +1,8 @@
 # kharms-bot
 
-A modified version of the [Kierkegaard repetition bot](https://github.com/lexipenia/repetition-bot-2). Rather than insert a long string of blank characters to guarantee non-identity of tweets, this bot uses two space characters and places them between the words. The real non-identity them comes from random numbers of zero-width spaces. (Twitter strips blank strings at the end of tweets, so putting the spaces there won't work.)
+A modified version of the [Kierkegaard repetition bot](https://github.com/lexipenia/repetition-bot-2). Rather than insert a long string of blank characters to guarantee non-identity of tweets, this fractures the tweet by inserting random numbers of zero-width spaces between its characters.
+
+I'm assuming that the Twitter API doesn't like this sort of thing, so am sticking with the Selenium approach, which so far has worked well for Søren.
 
 ## `config.py` and `chromedriver` location
 
