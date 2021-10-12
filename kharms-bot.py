@@ -1,6 +1,6 @@
 from sys import argv
 from datetime import datetime
-from random import choice, randint
+from random import randint
 from time import sleep
 from os import remove, path, mkdir
 
